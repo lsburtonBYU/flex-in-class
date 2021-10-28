@@ -1,0 +1,243 @@
+:root {
+  --text-color: #342517;
+  --background-color: #f2efe7;
+  --heading-color: #556f91;
+  --heading-color-opacity: rgba(85, 111, 145, 0.3);
+  --overlay-background-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Lato", sans-serif;
+  font-size: 1.25rem;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading-color);
+  font-family: "Alegreya", serif;
+  font-family: "Muli", sans-serif;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  margin: 0.2rem 0 1rem;
+  line-height: 1.3;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+main {
+  max-width: 50rem;
+  align-self: center;
+  margin: 0 2rem;
+}
+
+footer {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+/* increase width of index.html body to allow for panel images */
+body.main main {
+  max-width: 70rem;
+}
+
+/* limit the width of the SVG on form page */
+.survey img {
+  width: 100px;
+}
+
+/* button styles */
+.button {
+  box-shadow: inset 0 0 0 2px var(--heading-color-opacity);
+  color: var(--heading-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  margin: 1rem 0 1.5rem;
+  padding: 1.2rem 2rem;
+  transition: all 0.15s linear;
+}
+
+.button:hover {
+  box-shadow: inset 0 0 0 2px var(--heading-color);
+}
+
+/* main menu */
+header {
+  /* use the body flexbox to center the menu */
+  align-self: center;
+}
+
+header ul {
+  display: flex;
+
+  /* remove bullets from list items
+     and clear default margin and padding */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+header a {
+  /* in order to add top and bottom padding
+     the a needs to be display block. You 
+     want the a to be large because on mobile
+     it is a "touch target" and needs to be
+     tall enough for an average finger to select it */
+  display: block;
+  padding: 1rem;
+  margin: 1rem;
+
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.5;
+  border-bottom: 2px solid transparent;
+}
+
+header a:hover {
+  color: var(--heading-color);
+  border-bottom: 2px solid var(--heading-color);
+}
+
+/* hero */
+.hero {
+  position: relative;
+
+  /* I decided to move the menu below the hero image */
+  order: -1;
+}
+
+.hero .overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-background-color);
+}
+
+.hero h1 {
+  font-size: 6rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.hero p {
+  color: var(--background-color);
+  font-size: 1.75rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* panel */
+.panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+
+.panel .image-wrapper {
+  order: -1;
+  flex: 0 1 40%;
+}
+
+.panel .text-wrapper {
+  flex: 1 0 60%;
+}
+
+.panel img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card styles */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 6rem;
+}
+
+.card {
+  position: relative;
+}
+
+.cards .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-background-color);
+  transition: opacity 300ms;
+}
+
+.cards p {
+  color: var(--background-color);
+  text-align: center;
+  margin: 30% 0 0;
+  font-size: 2.5rem;
+  line-height: 1;
+  text-shadow: 3px 3px 3px rgb(0 0 0 / 60%);
+}
+
+.card:hover .overlay {
+  opacity: 0;
+}
+
+@media (min-width: 700px) {
+  .panel {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .panel h2 {
+    margin: 0;
+  }
+
+  .panel .left {
+    order: -2;
+  }
+
+  .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cards .card {
+    flex: 1 1 45%;
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    flex-wrap: nowrap;
+  }
+}
